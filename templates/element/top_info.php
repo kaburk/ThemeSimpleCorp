@@ -14,10 +14,14 @@
           <?php $this->BcBaser->blogPosts('news', 3) ?>
       </div>
       <div class="col span-4">
-        <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
-        <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
-        <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
-        <p> ※ バナー関連は、バナープラグインが公開されたら管理画面からバナー管理できるようにすると良さそうです。</p>
+        <?php if (\Cake\Core\Plugin::isLoaded('Banner')): ?>
+          <?php $this->Banner->showBanner('TOPバナー', ['template' => 'banner_block_top']); ?>
+        <?php else: ?>
+          <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
+          <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
+          <?php $this->BcBaser->link($this->BcBaser->getImg('banner.png', ['alt'=> 'バナー画像']), '__DUUMY__', ['escape' => false, 'target' => '_blank']); ?>
+          <p> ※ バナー関連は、バナープラグインが公開されたら管理画面からバナー管理できるようにすると良さそうです。</p>
+        <?php endif ?>
       </div>
     </div>
   </section>
